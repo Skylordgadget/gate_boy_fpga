@@ -1,6 +1,6 @@
 `timescale 1ns / 1ns
 
-module adc_tb ();
+module alu_tb ();
     import gate_boy_pkg::*;
 
     localparam CLK_PERIOD = 250; // 250 ns -> 1/250ns = 4MHz
@@ -21,7 +21,7 @@ module adc_tb ();
     always #(CLK_PERIOD/2) clk = ~clk; // start clonking the clonk and don't stop the clonk
     always #(CLK_PERIOD*2) phi = ~phi; 
 
-    adc adc (
+    alu alu (
         .clk    (clk),
         .phi    (phi),
 

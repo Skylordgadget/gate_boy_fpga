@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
-//  Filename:       adc.sv                                                    //
+//  Filename:       alu.sv                                                    //
 //  Author:         Harry Kneale-Roby & Alex Marshall                         //
 //  Description:    Game Boy ALU                                              //
 //  TODO:           Everything                                                //
