@@ -1,0 +1,4 @@
+test/modelsim/wlft*
+test/modelsim/transcript*
+test/modelsim/tcl_stacktrace*
+test/modelsim/*.mti

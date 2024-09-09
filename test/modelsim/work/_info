@@ -1,0 +1,88 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/harry/OneDrive - University of Bath/VibeAI/1dcnn/test/modelsim
+vadc
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 DXx4 work 12 gate_boy_pkg 0 22 fo;NNI^XjKQ:KR7?OdUah1
+Z2 !s110 1725892753
+!i10b 1
+!s100 i0b@fIUZ^h`j2H2Lka<Oa0
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IEXi0Sg88fQcQSe:YXklCc2
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+Z5 dC:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/modelsim
+w1725892147
+8C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/src/adc.sv
+FC:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/src/adc.sv
+!i122 9
+L0 10 34
+Z6 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z7 !s108 1725892753.000000
+!s107 C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/src/adc.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/src/adc.sv|
+!i113 1
+Z8 o-work work -sv
+Z9 tCvgOpt 0
+vadc_tb
+R0
+R1
+R2
+!i10b 1
+!s100 cGl7O?lmg7:7@6M^[V9^32
+R3
+Izd?0@=faL:_FZ]9oEQIWa2
+R4
+S1
+R5
+w1725892751
+8C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/adc_tb.sv
+FC:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/adc_tb.sv
+!i122 8
+L0 3 44
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/adc_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/adc_tb.sv|
+!i113 1
+R8
+R9
+Xgate_boy_pkg
+R0
+R2
+!i10b 1
+!s100 IoT`n_5=HIn2U5n0CR4W:3
+R3
+Ifo;NNI^XjKQ:KR7?OdUah1
+Vfo;NNI^XjKQ:KR7?OdUah1
+S1
+R5
+w1725891292
+8C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/pkg/gate_boy_pkg.sv
+FC:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/pkg/gate_boy_pkg.sv
+!i122 10
+L0 5 0
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/pkg/gate_boy_pkg.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/pkg/gate_boy_pkg.sv|
+!i113 1
+R8
+R9
