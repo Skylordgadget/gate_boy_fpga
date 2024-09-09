@@ -7,7 +7,7 @@
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-module adc (
+module alu (
     clk,    // 4MHz clock
     phi,    // 1MHz clock <- not sure if we should use two clock lines
     // rst <- idk if we're using a reset
