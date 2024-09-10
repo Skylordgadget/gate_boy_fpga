@@ -12,9 +12,11 @@ module alu_tb ();
     logic [DATA_WIDTH-1:0] operand_A;
     logic [DATA_WIDTH-1:0] operand_B;
 
-    logic [OPCODE_WIDTH-1:0] opcode;
+    instruction_t opcode;
 
+    logic [FLAG_WIDTH-1:0] flags;
     logic [DATA_WIDTH-1:0] result;
+
 
     initial clk = 1'b1;
     initial phi = 1'b1;
@@ -30,17 +32,21 @@ module alu_tb ();
 
         .opcode     (opcode),
 
-        .result     (result)
+        .result     (result),
+        .flags      (flags)
     );
 
     initial begin
-        operand_A = {DATA_WIDTH{1'b0}};
-        operand_B = {DATA_WIDTH{1'b0}};
-        opcode = {OPCODE_WIDTH{1'b0}};
-        #100; // 100ns (this is naughty we should really advance by multiples of the clock period--I will do this when I write a proper TB)
-        operand_A = 8'd1;
-        operand_B = 8'd1;
-
+        opcode = ADD;
+        for (int i=0; i<{DATA_WIDTH{1'b1}}; i++) begin
+            for (int j=0; j<{DATA_WIDTH{1'b1}}; j++) begin
+                #(CLK_PERIOD*4);
+                operand_A <= i;
+                operand_B <= j;
+            end
+        end
+        $display("Test completed successfully");
+        $stop;
     end
 
 endmodule
