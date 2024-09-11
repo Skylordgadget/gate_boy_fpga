@@ -4,7 +4,10 @@
 // synopsys translate_on
 
 package gate_boy_ops_pkg;
-    typedef enum { 
+
+    localparam NUM_ALU_OPS = 19;
+    localparam ALU_OPS_T_WIDTH = clog2(NUM_ALU_OPS);
+    typedef enum logic[ALU_OPS_T_WIDTH:0] { 
         // 8 & 16 bit arithmetic
         ADD,
         INC,
@@ -31,9 +34,9 @@ package gate_boy_ops_pkg;
         SLA,
         SRA,
         SRL
-    } alu_ops;
+    } alu_ops_t;
 
     typedef enum {
         // Loads, jumps, subroutines, stack-tomfoolery, misc
-    } control_ops;
+    } control_ops_t;
 endpackage
