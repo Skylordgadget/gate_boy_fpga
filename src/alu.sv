@@ -2,7 +2,7 @@
 //                                                                            //
 //  Filename:       alu.sv                                                    //
 //  Author:         Harry Kneale-Roby & Alex Marshall                         //
-//  Description:    Game Boy ALU                                              //
+//  Description:    Game Boy ALU and IDU                                      //
 //  TODO:           Everything                                                //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,7 +17,7 @@ module alu (
 
     opcode,
 
-    // do we want a separate output port for flags?
+    flags,
     result
 );
 
@@ -29,15 +29,35 @@ module alu (
 
     input logic [DATA_WIDTH-1:0] operand_A;
     input logic [DATA_WIDTH-1:0] operand_B;
-    input logic [OPCODE_WIDTH-1:0] opcode;
+    input instruction_t opcode;
 
+    output logic [FLAG_WIDTH-1:0] flags;
     output logic [DATA_WIDTH-1:0] result;
 
-    // typedef or state machine ?
-    // I reckon state machine since, opcodes can have dont-care bits
+    logic [DATA_WIDTH:0] next_result;
+    logic [FLAG_WIDTH-1:0] next_flags;
+    logic [4:0] bottom;
 
-    always_ff @(posedge clk) begin
-        result <= operand_A + operand_B; // placeholder
+    always_comb begin
+        next_result = {1'b0, result};
+        next_flags = {flags, 4'b0000};
+        case (opcode)
+            ADD: begin
+                next_result = operand_A + operand_B;
+                next_flags[Z] = !(next_result[DATA_WIDTH-1:0]);
+                next_flags[N] = 1'b0;
+
+                bottom = operand_A[3:0] + operand_B[3:0];
+                next_flags[H] = bottom[4];
+
+                next_flags[C] = next_result[DATA_WIDTH-1];
+            end
+        endcase        
+    end
+
+    always_ff @(posedge phi) begin
+        result <= next_result[DATA_WIDTH-1:0];
+        flags <= next_flags;
     end
 
 endmodule
