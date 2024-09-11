@@ -29,28 +29,27 @@ module alu (
 
     input logic [DATA_WIDTH-1:0] operand_A;
     input logic [DATA_WIDTH-1:0] operand_B;
-    input instruction_t opcode;
+    input alu_ops_t opcode;
 
     output logic [FLAG_WIDTH-1:0] flags;
     output logic [DATA_WIDTH-1:0] result;
 
-    logic [DATA_WIDTH:0] next_result;
+    logic [DATA_WIDTH-1:0] next_result;
     logic [FLAG_WIDTH-1:0] next_flags;
-    logic [4:0] bottom;
+
+    logic [HALF_DATA_WIDTH:0] tmp;
 
     always_comb begin
         next_result = {1'b0, result};
         next_flags = {flags[3:0], 4'b0000};
         case (opcode)
             ADD: begin
-                next_result = operand_A + operand_B;
-                next_flags[Z] = !(next_result[DATA_WIDTH-1:0]);
+                {next_flags[C], next_result} = operand_A + operand_B;
+                next_flags[Z] = !next_result;
                 next_flags[N] = 1'b0;
 
-                bottom = operand_A[3:0] + operand_B[3:0];
-                next_flags[H] = bottom[4];
-
-                next_flags[C] = next_result[DATA_WIDTH-1];
+                tmp = operand_A[HALF_DATA_WIDTH-1:0] + operand_B[HALF_DATA_WIDTH-1:0];
+                next_flags[H] = tmp[HALF_DATA_WIDTH];
             end
         endcase        
     end

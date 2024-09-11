@@ -12,75 +12,78 @@ cModel Technology
 dC:/Users/harry/OneDrive - University of Bath/VibeAI/1dcnn/test/modelsim
 valu
 Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z1 DXx4 work 12 gate_boy_pkg 0 22 4cY9O58OkPkN0=_Rbi9k<1
-Z2 !s110 1725987872
-Z3 VDg1SIo80bB@j0V0VzS_@n1
-r1
-!s85 0
+Z1 DXx4 work 12 gate_boy_pkg 0 22 L88Pc5:7nf2M7gb25GoLm3
+Z2 !s110 1726060078
 !i10b 1
-!s100 oNSm>znCAS?HWY?5ZG[oC2
-I7a3UIABBaTgakAz8<U8B]3
+!s100 438Yz`Fa51_[>MTNGffZc1
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I07aYCaoTV77NR=[TA0:iO0
+Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
-Z4 dC:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/modelsim
-w1725987442
+Z5 dC:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/modelsim
+w1726059073
 8C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/src/alu.sv
 FC:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/src/alu.sv
-!i122 30
-L0 10 54
-Z5 OV;L;2020.1;71
+!i122 64
+L0 10 53
+Z6 OV;L;2020.1;71
+r1
+!s85 0
 31
-Z6 !s108 1725987872.000000
+Z7 !s108 1726060078.000000
 !s107 C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/src/alu.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/src/alu.sv|
 !i113 1
-Z7 o-work work -sv
-Z8 tCvgOpt 0
+Z8 o-work work -sv
+Z9 tCvgOpt 0
 valu_tb
 R0
 R1
 R2
-R3
-r1
-!s85 0
 !i10b 1
-!s100 <Jd=Ma]KHHl]cHRN`g4n]1
-IXAfYNXjb=j61Fz7Bi>C@X1
-S1
+!s100 Y6LMCGdm@1AQAi]T]UFj^3
+R3
+I>]c7>jM[h@FBoRY>n:XcF3
 R4
-w1725987868
+S1
+R5
+w1726060073
 8C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/alu_tb.sv
 FC:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/alu_tb.sv
-!i122 29
-L0 3 50
-R5
-31
+!i122 63
+L0 3 98
 R6
+r1
+!s85 0
+31
+R7
 !s107 C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/alu_tb.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/test/alu_tb.sv|
 !i113 1
-R7
 R8
+R9
 Xgate_boy_pkg
 R0
 R2
-V4cY9O58OkPkN0=_Rbi9k<1
-r1
-!s85 0
 !i10b 1
-!s100 E1ebWPNiS?2JD]9]lYZ`z0
-I4cY9O58OkPkN0=_Rbi9k<1
+!s100 M9c:ZQD<<=;k:9<^Ul<T13
+R3
+IL88Pc5:7nf2M7gb25GoLm3
+VL88Pc5:7nf2M7gb25GoLm3
 S1
-R4
-w1725985114
+R5
+w1726059267
 8C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/pkg/gate_boy_pkg.sv
 FC:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/pkg/gate_boy_pkg.sv
-!i122 28
+!i122 62
 L0 5 0
-R5
+R6
+r1
+!s85 0
 31
-!s108 1725987871.000000
+R7
 !s107 C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/pkg/gate_boy_pkg.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/harry/OneDrive - University of Bath/gate_boy_fpga/pkg/gate_boy_pkg.sv|
 !i113 1
-R7
 R8
+R9

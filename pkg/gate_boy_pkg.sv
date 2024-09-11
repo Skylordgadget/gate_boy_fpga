@@ -3,15 +3,8 @@
 // synopsys translate_on
 
 package gate_boy_pkg;
-    import gate_boy_alu_pkg::*;
 
     // project-wide localparams
-
-    localparam DATA_WIDTH = 8;
-    localparam OPCODE_WIDTH = 8;
-    localparam ADDRESS_WIDTH = 16;
-
-
 
     /* simple clog2 for computing the minimum number of bits required for certain registers  
     ONLY USE THIS FUNCTION FOR DEFINING LOCALPARAMS AND PARAMETERS--IT IS NOT SYNTHESISABLE*/
@@ -28,6 +21,19 @@ package gate_boy_pkg;
         end
     endfunction
 
+    function integer cdiv;
+        input [31:0] x;
+        input [31:0] y;
+        begin
+            cdiv = (x + y - 1) / y;
+        end
+    endfunction
+
+    localparam DATA_WIDTH = 8;
+    localparam HALF_DATA_WIDTH = cdiv(DATA_WIDTH, 2);
+    localparam OPCODE_WIDTH = 8;
+    localparam ADDRESS_WIDTH = 16;
+
     localparam NUM_INSTRUCTIONS = 46;
     localparam INSTRUCTION_T_WIDTH = clog2(NUM_INSTRUCTIONS);
     localparam FLAG_WIDTH = 8;
@@ -38,4 +44,38 @@ package gate_boy_pkg;
         H = 3'd5,
         C = 3'd4
     } flag_t;
+
+    localparam NUM_ALU_OPS = 19;
+    localparam ALU_OPS_T_WIDTH = clog2(NUM_ALU_OPS);
+    
+    typedef enum logic[ALU_OPS_T_WIDTH-1:0] { 
+        // 8 & 16 bit arithmetic
+        ADD,
+        INC,
+        DEC,
+
+        // 8 bit arithmetic
+        ADC,
+        SUB,
+        SBC,
+        CP,
+
+        // 8 bit logical
+        AND,
+        OR,
+        XOR,
+
+        // Shift operations
+        RL,
+        RLC,
+        RLCA,
+        RR,
+        RRC,
+        RRCA,        
+        SLA,
+        SRA,
+        SRL
+    } alu_ops_t;
+
+
 endpackage
