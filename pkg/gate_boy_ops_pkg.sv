@@ -7,7 +7,7 @@ package gate_boy_ops_pkg;
 
     localparam NUM_ALU_OPS = 19;
     localparam ALU_OPS_T_WIDTH = clog2(NUM_ALU_OPS);
-    typedef enum logic[ALU_OPS_T_WIDTH:0] { 
+    typedef enum logic[ALU_OPS_T_WIDTH-1:0] { 
         // 8 & 16 bit arithmetic
         ADD,
         INC,

@@ -40,7 +40,7 @@ module alu (
 
     always_comb begin
         next_result = {1'b0, result};
-        next_flags = {flags, 4'b0000};
+        next_flags = {flags[3:0], 4'b0000};
         case (opcode)
             ADD: begin
                 next_result = operand_A + operand_B;
