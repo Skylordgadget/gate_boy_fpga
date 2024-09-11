@@ -3,7 +3,7 @@
 // synopsys translate_on
 
 package gate_boy_pkg;
-    `import gate_boy_alu_pkg::alu_op;
+    import gate_boy_alu_pkg::*;
 
     // project-wide localparams
 
