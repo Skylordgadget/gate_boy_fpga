@@ -2,7 +2,7 @@
 //                                                                            //
 //  Filename:       alu.sv                                                    //
 //  Author:         Harry Kneale-Roby & Alex Marshall                         //
-//  Description:    Game Boy ALU and IDU                                      //
+//  Description:    Game Boy ALU                                              //
 //  TODO:           Everything                                                //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -40,17 +40,110 @@ module alu (
     logic [HALF_DATA_WIDTH:0] tmp;
 
     always_comb begin
-        next_result = {1'b0, result};
-        next_flags = {flags[3:0], 4'b0000};
+        next_result = result;
+        next_flags = {flags[HALF_DATA_WIDTH-1:0], 4'b0000};
         case (opcode)
             ADD: begin
-                {next_flags[C], next_result} = operand_A + operand_B;
+                {next_flags[C], next_result} = operand_A + operand_B; // add
+                
                 next_flags[Z] = !next_result;
                 next_flags[N] = 1'b0;
-
                 tmp = operand_A[HALF_DATA_WIDTH-1:0] + operand_B[HALF_DATA_WIDTH-1:0];
                 next_flags[H] = tmp[HALF_DATA_WIDTH];
             end
+            ADC: begin
+                {next_flags[C], next_result} = operand_A + operand_B + flags[C]; // add width carry
+
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                tmp = operand_A[HALF_DATA_WIDTH-1:0] + operand_B[HALF_DATA_WIDTH-1:0] + flags[C];
+                next_flags[H] = tmp[HALF_DATA_WIDTH];
+            end
+            SUB: begin
+                {next_flags[C], next_result} = operand_A - operand_B; // subtract
+
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b1;
+                tmp = operand_A[HALF_DATA_WIDTH-1:0] - operand_B[HALF_DATA_WIDTH-1:0];
+                next_flags[H] = tmp[HALF_DATA_WIDTH];                
+            end
+            SBC: begin
+                {next_flags[C], next_result} = operand_A - operand_B - flags[C]; // subtract with carry
+
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b1;
+                tmp = operand_A[HALF_DATA_WIDTH-1:0] - operand_B[HALF_DATA_WIDTH-1:0] - flags[C];;
+                next_flags[H] = tmp[HALF_DATA_WIDTH];                
+            end
+            // CP (just sub but the result is not registered, so it's not worth duplicating SUB)
+            // skipping INC and DEC for now (I think they should be part of the IDU)
+            AND: begin
+                next_result = operand_A & operand_B; // bitwise and
+
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b1;
+                next_flags[C] = 1'b0;
+            end
+            OR: begin
+                next_result = operand_A | operand_B; // bitwise or
+
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b0;
+                next_flags[C] = 1'b0;
+            end
+            XOR: begin
+                next_result = operand_A ^ operand_B; // bitwise xor
+
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b0;
+                next_flags[C] = 1'b0;
+            end
+            RLC: begin
+                {next_flags[C], next_result} = {operand_A, operand_A[DATA_WIDTH-1]};
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b0;
+            end
+            RL: begin
+                {next_flags[C], next_result} = {operand_A, next_flags[C]};
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b0;
+            end
+            RRC: begin
+                {next_result, next_flags[C]} = {operand_A[0], operand_A};
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b0;
+            end
+            RR: begin
+                {next_result, next_flags[C]} = {next_flags[C], operand_A};
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b0;
+            end
+            SL: begin
+                {next_flags[C], next_result} = operand_A << 1;
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b0;
+            end
+            SR: begin
+                {next_result, next_flags[C]} = signed'(operand_A) >>> 1;
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b0;
+            end
+            SRL: begin
+                {next_result, next_flags[C]} = operand_A >> 1;
+                next_flags[Z] = !next_result;
+                next_flags[N] = 1'b0;
+                next_flags[H] = 1'b0;
+            end
+            // stopping here for now
         endcase        
     end
 

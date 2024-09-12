@@ -68,12 +68,10 @@ package gate_boy_pkg;
         // Shift operations
         RL,
         RLC,
-        RLCA,
         RR,
-        RRC,
-        RRCA,        
-        SLA,
-        SRA,
+        RRC,      
+        SL,
+        SR,
         SRL
     } alu_ops_t;
 
