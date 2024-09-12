@@ -77,5 +77,12 @@ package gate_boy_pkg;
         SRL
     } alu_ops_t;
 
+    localparam NUM_IDU_OPS = 2;
+    localparam IDU_OPS_T_WIDTH = clog2(NUM_IDU_OPS);
+
+    typedef enum logic[IDU_OPS_T_WIDTH-1:0] { 
+        INC16,
+        DEC16
+    } idu_ops_t;
 
 endpackage
